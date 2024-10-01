@@ -1,5 +1,5 @@
 # Group.py
-groups = [
+school_groups = [
     {
         'name': 'Softeng 2',
         'url': 'https://t.me/joinchat/AWHhTUy1UVuIM0WvbHNrwg',
