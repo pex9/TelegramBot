@@ -60,18 +60,17 @@ Here are the commands you can use with the bot:
 If you want to run your bot for free, follow these steps to set it up on **[PythonAnywhere](https://www.pythonanywhere.com/)**:
 
 1. **Register on PythonAnywhere**: Go to [www.pythonanywhere.com](https://www.pythonanywhere.com/) and create a free account.
-
-   ![PythonAnywhere Registration](https://example.com/path/to/pythonanywhere_registration.png)  <!-- Replace with your actual image link -->
-
 2. **Open a Bash Console**:
    - After logging in, navigate to the **Consoles** tab and start a new **Bash console**.
-
 3. **Install the required package**:
    - In the Bash console, run the following command to install the Telegram package:
-
    ```bash
    pip install python-telegram-bot[ext]
    ```
-4 **Run your program **: 
+4 **Run your program**: 
 Click on the run button on the console
 Congratulations now your bot will now run 24/7 on PythonAnywhere!
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
