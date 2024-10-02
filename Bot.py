@@ -1,22 +1,19 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 from common import token_code
-from Group import school_groups, animes
+from Group import *
 
 # Define the command handler for the /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    keyboard = [
-        [InlineKeyboardButton("School", callback_data='school')],
-        [InlineKeyboardButton("Anime", callback_data='anime')],
-    ]
-    
+    # Create the main menu keyboard based on the Category list
+    keyboard = [[InlineKeyboardButton(group["name"], callback_data=group["value"])] for group in Category]
+
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text('Welcome to the Pex Bot! Please choose an option:', reply_markup=reply_markup)
+
 async def return_to_main_menu(query):
-    keyboard = [
-        [InlineKeyboardButton("School", callback_data='school')],
-        [InlineKeyboardButton("Anime", callback_data='anime')],
-    ]
+    # Recreate the main menu using the Category list
+    keyboard = [[InlineKeyboardButton(group["name"], callback_data=group["value"])] for group in Category]
     
     reply_markup = InlineKeyboardMarkup(keyboard)
     await query.edit_message_text('Welcome to the Menu Bot! Please choose an option:', reply_markup=reply_markup)
@@ -25,24 +22,20 @@ async def return_to_main_menu(query):
 async def show_groups(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
     await query.answer()  # Acknowledge the callback query
+    
+    # Find the selected category using a single loop
+    selected_category = next((group for group in Category if group["value"] == query.data), None)
 
-    if query.data == 'school':
-        keyboard = []
-        for group in school_groups:
-            keyboard.append([InlineKeyboardButton(group['name'], url=group['url'])])
-        keyboard.append([InlineKeyboardButton("Back", callback_data='back_to_main')])  # Back option
+    # If a matching category is found
+    if selected_category:
+        groups = selected_category["group"]  # Get the list of groups associated with this category
 
+        # Create a keyboard for the group selection
+        keyboard = [[InlineKeyboardButton(group['name'], url=group['url'])] for group in groups]
+        keyboard.append([InlineKeyboardButton("Back", callback_data='back_to_main')])  # Add the Back button
+        
         reply_markup = InlineKeyboardMarkup(keyboard)
-        await query.edit_message_text(text='Select a school group:', reply_markup=reply_markup)
-
-    elif query.data == 'anime':
-        keyboard = []
-        for group in animes:
-            keyboard.append([InlineKeyboardButton(group['name'], url=group['url'])])
-        keyboard.append([InlineKeyboardButton("Back", callback_data='back_to_main')])  # Back option
-
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        await query.edit_message_text(text='Select an anime group:', reply_markup=reply_markup)
+        await query.edit_message_text(text=f'Select a group from {selected_category["name"]}:', reply_markup=reply_markup)
 
     elif query.data == 'back_to_main':
         await return_to_main_menu(query)
@@ -54,8 +47,12 @@ def main():
     # Register the /start command handler
     application.add_handler(CommandHandler('start', start))
     
-    # Register the callback query handler for button presses
-    application.add_handler(CallbackQueryHandler(show_groups, pattern='^(school|anime|back_to_main)$'))
+    # Create a pattern that matches all 'value' fields in the Category list, plus 'back_to_main'
+    category_values = [group['value'] for group in Category]
+    pattern = f"^({'|'.join(category_values + ['back_to_main'])})$"
+    
+    # Register the callback query handler with the dynamic pattern
+    application.add_handler(CallbackQueryHandler(show_groups, pattern=pattern))
 
     # Start the Bot
     application.run_polling()

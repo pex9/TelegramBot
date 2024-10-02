@@ -1,4 +1,3 @@
-# Group.py
 school_groups = [
     {
         'name': 'Softeng 2',
@@ -12,26 +11,35 @@ school_groups = [
         'name': 'Human Computer Interaction',
         'url': 'https://t.me/joinchat/AWHhTUX0hDr-lh0jv2ykng',
     },
-    {
-        'name': 'Main Class Group',
-        'url': 'https://t.me/+tpFeU4udsWIyOTc8',
-    },
 ]
 animes = [
     {
-        'name': 'Naruto',
-        'url': 'https://t.me/joinchat/AWHhTUy1UVuIM0WvbHNrwg',
+        'name': 'Re zero',
+        'url': 'https://t.me/c/2228186260/87',
     },
     {
-        'name': 'One Piece',
-        'url': 'https://t.me/joinchat/AWHhTUy1UVuIM0WvbHNrwg',
+        'name': 'Dragon ball daima',
+        'url': 'https://t.me/c/2228186260/84',
     },
     {
-        'name': 'Attack on Titan',
-        'url': 'https://t.me/joinchat/AWHhTUX0hDr-lh0jv2ykng',
+        'name': 'Blue lock',
+        'url': 'https://t.me/c/2228186260/2338',
     },
     {
-        'name': 'Death Note',
+        'name': 'Dan machi familia myth',
+        'url': 'https://t.me/DANMACHI',
+    },
+]
+personal_groups = [
+    {
+        'name': 'Main Group',
         'url': 'https://t.me/+tpFeU4udsWIyOTc8',
     },
+]
+# add the category that you prefer to show
+Category = [
+    { "name" : "School Groups", "value" : "school","group": school_groups },
+    { "name" : "Anime Groups", "value" : "anime", "group": animes },
+    { "name" : "Personal Groups", "value" : "personal", "group": personal_groups },
+    # add group here { "name" : "Football Groups", "value" : "football" },
 ]
