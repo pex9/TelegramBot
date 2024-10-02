@@ -16,6 +16,7 @@ This guide will help you create your own Telegram bot using the BotFather, obtai
    - Type `/newbot` and press Enter.
    - Follow the prompts to choose a name and a username for your bot.
    - The username must end with "bot" (e.g., `MySampleBot`).
+   - You can also change the image using a specific /Edit bot pic
 
 5. **Get Your Token**: After successfully creating your bot, BotFather will provide you with a token. It will look like this:
 
@@ -27,9 +28,9 @@ This guide will help you create your own Telegram bot using the BotFather, obtai
 
 2. **Create a Common File**:
 - Inside your project directory, create a file named `common.py`.
-- Open `common.py` in a text editor and add the following code:
+- Open or create if not present `Common.py` in a text editor and add the following code:
   ```python
-  token_code = 'YOUR_BOT_TOKEN_HERE'  # Replace with your actual bot token
+  token_code = 'YOUR_BOT_TOKEN_HERE'  # Replace with your actual bot token generated from Botfather
   ```
 
 3. **Install Required Packages**:
