@@ -1,3 +1,5 @@
+![Bot in Telegram](bot.png) 
+
 # Telegram Bot Setup Guide
 
 This guide will help you create your own Telegram bot using the BotFather, obtain the token, and set up your bot using the provided code.
