@@ -54,3 +54,24 @@ Here are the commands you can use with the bot:
 - **`/add`**: Add a group to a category.
   - After using this command, you will be prompted to select a category and provide the group name and link.
 - **`/cancel`**: You can also cancel any operation at any point by typing this command.
+- 
+## Running Your Bot for Free on PythonAnywhere
+
+If you want to run your bot for free, follow these steps to set it up on **[PythonAnywhere](https://www.pythonanywhere.com/)**:
+
+1. **Register on PythonAnywhere**: Go to [www.pythonanywhere.com](https://www.pythonanywhere.com/) and create a free account.
+
+   ![PythonAnywhere Registration](https://example.com/path/to/pythonanywhere_registration.png)  <!-- Replace with your actual image link -->
+
+2. **Open a Bash Console**:
+   - After logging in, navigate to the **Consoles** tab and start a new **Bash console**.
+
+3. **Install the required package**:
+   - In the Bash console, run the following command to install the Telegram package:
+
+   ```bash
+   pip install python-telegram-bot[ext]
+   ```
+4 **Run your program **: 
+Click on the run button on the console
+Congratulations now your bot will now run 24/7 on PythonAnywhere!
