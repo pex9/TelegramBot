@@ -31,10 +31,7 @@ animes = [
     },
 ]
 personal_groups = [
-    {
-        'name': 'Main Group',
-        'url': 'https://t.me/+tpFeU4udsWIyOTc8',
-    },
+  
 ]
 # add the category that you prefer to show
 Category = [
